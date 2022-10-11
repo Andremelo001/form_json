@@ -55,6 +55,31 @@ if (!file_put_contents("Result_json/messages.json", json_encode($data_to_save, J
     $error = "Erro encontrado, tente novamente!!";
     
 }
+    
+    $json= json_encode($dados);
 
+print_r($json);
+$curl = curl_init();
+
+curl_setopt_array($curl,[
+    CURLOPT_URL=>"http://localhost/webserviceandre/Result_json/messages.json",
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => $json,
+    CURLOPT_RETURNTRANSFER=>true,
+    CURLOPT_POST=>true,
+    CURLOPT_HTTPHEADER => [
+        'Content-Type: application/json',
+        'Content-Length: '.strlen($json)
+    ],
+    CURLOPT_HEADER=>true,
+    CURLOPT_RETURNTRANSFER=> true
+    ]);
+try {
+   $response = curl_exec($curl);
+    echo $response;
+} catch (Exception $e) {
+    echo $e;
+}
+    
 }
 
