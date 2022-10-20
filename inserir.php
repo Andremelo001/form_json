@@ -47,15 +47,15 @@ $stmt = $mysqli->prepare
     "INSERT INTO teste (descricao, cliente, cpf) 
      VALUES (?,?,?)"
 );
-$stmt->bind_param("ssdi", $descricao, $cliente, $cpf);
+$stmt->bind_param("ssd", $descricao, $cliente, $cpf);
 
 
 //percorrendo os dados do json
 $inserted_rows = 0;
-foreach ((array)$data_to_save as $old) {
-    $descricao = $old["descricao"];
-    $cliente = $old["cliente"];
-    $cpf = $old["cpf"];
+foreach ((array)$data_to_save as $data) {
+    $descricao = $data["desc"];
+    $cliente = $data["client"];
+    $cpf = $data["cpf"];
 
     $stmt->execute();
     $inserted_rows ++;
@@ -69,6 +69,14 @@ if (count($data_to_save) == $inserted_rows) {
 
 }
 
+//funciona, porém ele sobreescreve os dados anteriores :(
+//percorrendo os dados do json;
+/*foreach ((array)$data_to_save as $data) {
+ 
+    $query = "INSERT INTO teste (descricao, cliente, cpf) VALUES ('".$data['desc']."', '".$data['client']."', '".$data['cpf']."')";
+
+    mysqli_query($mysqli, $query);
+}*/
 
 //Inserindo o json no banco
 
