@@ -8,7 +8,7 @@ require("inserir.php");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Web Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -243,6 +243,156 @@ require("inserir.php");
                             <input type="text" name="cpf" required>
                         </div>
 
+                        <div class="input-field">
+                            <label>Inscrição Estadual</label>
+                            <input type="text" name="estadual" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>CNPJ</label>
+                            <input type="text" name="cnpj" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>UF</label>
+                            <input type="text" name="uf" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details ID">
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Cidade</label>
+                            <input type="text" name="city" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Bairro</label>
+                            <input type="text" name="bairro" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Endereço</label>
+                            <input type="text" name="endereco" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>CEP</label>
+                            <input type="text" name="cep" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Número</label>
+                            <input type="text" name="number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Telefone</label>
+                            <input type="text" name="tell" required>
+                        </div>
+
+                        
+                    </div>
+
+                    <button class="nextBtn">
+                        <span class="btnText">Próximo</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+
+            <div class="form second">
+                <div class="details address">
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Celular</label>
+                            <input type="text" name="cell" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Nome_Fantasia</label>
+                            <input type="text" name="fantasy" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>OBS</label>
+                            <input type="text" name="obs" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>E-mail</label>
+                            <input type="email" name="email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Limíte de Crédito</label>
+                            <input type="text" name="credito" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Tipo de contribuinte</label>
+                            <input type="text" name="contribuinte" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details family">
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Data de Cadastro</label>
+                            <input type="date" name="date_cadastro" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Status do Cliente</label>
+                            <input type="text" name="status" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Inativo</label>
+                            <input type="text" name="inativo" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Chave</label>
+                            <input type="text" name="chave" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Data de Vencimento</label>
+                            <input type="date" name="date_vencimento" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Data de Solicitação</label>
+                            <input type="date" name="date_solicitacao" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Data de Prorrogação</label>
+                            <input type="date" name="date_prorrogacao" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Chave de Prorrogação</label>
+                            <input type="date" name="chave_prorrogacao" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Id do Usuário</label>
+                            <input type="text" name="id_user" required>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Voltar</span>
+                        </div>
+
                         <!-- Button trigger modal -->
                         <button type="submit" class="submit" name="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <span class="btnText">Enviar</span>
@@ -251,6 +401,7 @@ require("inserir.php");
                     </div>
                 </div>
             </div>
+
         </form>
     </div>
 
