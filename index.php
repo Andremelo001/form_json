@@ -10,6 +10,7 @@ require("inserir.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <style>
@@ -61,7 +62,6 @@ require("inserir.php");
     }
 
     .container form {
-        position: relative;
         margin-top: 16px;
         min-height: 490px;
         background-color: #fff;
@@ -194,7 +194,6 @@ require("inserir.php");
         margin-right: 14px;
     }
 
-
     @media (max-width: 750px) {
         .container form {
             overflow-y: scroll;
@@ -213,7 +212,9 @@ require("inserir.php");
         form .fields .input-field {
             width: 100%;
         }
+
     }
+
 </style>
 <title>Web Service</title>
 </head>
@@ -241,156 +242,6 @@ require("inserir.php");
                         <div class="input-field">
                             <label>CPF</label>
                             <input type="text" name="cpf" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Inscrição Estadual</label>
-                            <input type="text" name="estadual" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>CNPJ</label>
-                            <input type="text" name="cnpj" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>UF</label>
-                            <input type="text" name="uf" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="details ID">
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Cidade</label>
-                            <input type="text" name="city" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Bairro</label>
-                            <input type="text" name="bairro" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Endereço</label>
-                            <input type="text" name="endereco" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>CEP</label>
-                            <input type="text" name="cep" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Número</label>
-                            <input type="text" name="number" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Telefone</label>
-                            <input type="text" name="tell" required>
-                        </div>
-
-                        
-                    </div>
-
-                    <button class="nextBtn">
-                        <span class="btnText">Próximo</span>
-                        <i class="uil uil-navigator"></i>
-                    </button>
-                </div> 
-            </div>
-
-            <div class="form second">
-                <div class="details address">
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Celular</label>
-                            <input type="text" name="cell" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Nome_Fantasia</label>
-                            <input type="text" name="fantasy" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>OBS</label>
-                            <input type="text" name="obs" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>E-mail</label>
-                            <input type="email" name="email" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Limíte de Crédito</label>
-                            <input type="text" name="credito" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Tipo de contribuinte</label>
-                            <input type="text" name="contribuinte" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="details family">
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Data de Cadastro</label>
-                            <input type="date" name="date_cadastro" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Status do Cliente</label>
-                            <input type="text" name="status" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Inativo</label>
-                            <input type="text" name="inativo" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Chave</label>
-                            <input type="text" name="chave" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Data de Vencimento</label>
-                            <input type="date" name="date_vencimento" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Data de Solicitação</label>
-                            <input type="date" name="date_solicitacao" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Data de Prorrogação</label>
-                            <input type="date" name="date_prorrogacao" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Chave de Prorrogação</label>
-                            <input type="date" name="chave_prorrogacao" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Id do Usuário</label>
-                            <input type="text" name="id_user" required>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <div class="backBtn">
-                            <i class="uil uil-navigator"></i>
-                            <span class="btnText">Voltar</span>
                         </div>
 
                         <!-- Button trigger modal -->
@@ -423,7 +274,7 @@ require("inserir.php");
             })
         })
 
-        backBtn.addEventListener("click", () => form.classList.remove('secActive'));
+        backBtn.addEventListener("click", () => form.classList.remove('secActive'));        
     </script>
 </body>
 
