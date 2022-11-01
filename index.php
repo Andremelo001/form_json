@@ -215,6 +215,88 @@ require("inserir.php");
 
     }
 
+    .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .popup{
+        width: 350px;
+        height: 280px;
+        padding: 30px 20px;
+        background: #f2f2f2;
+        border-radius: 10px;
+        box-sizing: border-box;
+        z-index: 999;
+        text-align: center;
+        opacity: 0;
+        top: -200%;
+        transform: translate(-50%, -50%) scale(0.5);
+        transition: opacity 300ms ease-in-out,
+                        top 1000ms ease-in-out,
+                  transform 1000ms ease-in-out;
+    }
+
+    .popup.active{
+        opacity: 1;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+    }
+
+    .popup .icon{
+        margin: 5px 0px;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #34f234;
+        text-align: center;
+        display: inline-block;
+        border-radius: 50%;
+        line-height: 60px;
+    }
+
+    .popup .icon i.fa{
+        font-size: 30px;
+        color: #34f234;
+    }
+
+    .popup .title{
+        margin: 5px 0px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .popup .description{
+        color: #222;
+        font-size: 15px;
+        padding: 5px;
+    }
+
+    .popup .dismiss-btn{
+        margin-top: 15px;
+
+    }
+
+    .popup .dismiss-btn button{
+        padding: 10px 20px;
+        background: #111;
+        color: #f5f5f5;
+        border: 2px solid #111;
+        font-size: 16px;
+        font-weight: 600;
+        outline: none;
+        border-radius: 10px;
+        transition: all 300ms ease-in-out;
+    }
+
+    .popup .dismiss-btn button:hover{
+        color: #111;
+        background: #f5f5f5;
+    }
+
+
 </style>
 <title>Web Service</title>
 </head>
@@ -245,7 +327,7 @@ require("inserir.php");
                         </div>
 
                         <!-- Button trigger modal -->
-                        <button type="submit" class="submit" name="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button id="open-popup-btn" type="submit" class="submit" name="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <span class="btnText">Enviar</span>
                             <i class="uil uil-navigator"></i>
                         </button>
@@ -254,11 +336,23 @@ require("inserir.php");
             </div>
 
         </form>
+
+        <div class="popup center">    
+            <div class="icon">
+                <i class="fa fa-check"></i>
+            </div>
+            <div class="title">
+                Dados Enviados!
+            </div>
+            <div class="description">
+                Os dados cadastrados foram enviados para o banco de dados com sucesso!
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script>
-        const form = document.querySelector("form"),
+        /*const form = document.querySelector("form"),
             nextBtn = form.querySelector(".nextBtn"),
             backBtn = form.querySelector(".backBtn"),
             allInput = form.querySelectorAll(".first input");
@@ -272,9 +366,19 @@ require("inserir.php");
                     form.classList.remove('secActive');
                 }
             })
-        })
+        });
 
-        backBtn.addEventListener("click", () => form.classList.remove('secActive'));        
+        backBtn.addEventListener("click", () => form.classList.remove('secActive'));*/
+        
+        document.getElementById("open-popup-btn").addEventListener("click", function(){
+            document.getElementsByClassName("popup")[0].classList.add("active");
+        });
+
+        document.getElementById("dismiss-popup-btn").addEventListener("click", function(){
+            document.getElementsByClassName("popup")[0].classList.remove("active");
+        });
+
+        
     </script>
 </body>
 
