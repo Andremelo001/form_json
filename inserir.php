@@ -7,89 +7,95 @@ if ($mysqli->connect_errno  != 0) {
 }
 
 //convertendo os dados do form para json
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
-$new_message = array(
+    $new_message = array(
 
-    "desc" => $_POST['desc'],
-    "client" => $_POST['client'],
-    "cpf" => $_POST['cpf']
-);
+        "desc" => $_POST['desc'],
+        "client" => $_POST['client'],
+        "cpf" => $_POST['cpf']
+    );
 
-if (filesize("Result_json/messages.json") == 0) {
+    if (filesize("Result_json/messages.json") == 0) {
 
-    $first_record = array($new_message);
+        $first_record = array($new_message);
 
-    $data_to_save = $first_record;
+        $data_to_save = $first_record;
+    } else {
 
-}else{
+        $old_records = json_decode(file_get_contents("Result_json/messages.json"), JSON_OBJECT_AS_ARRAY);
 
-    $old_records = json_decode(file_get_contents("Result_json/messages.json"), JSON_OBJECT_AS_ARRAY);
+        array_push($old_records, $new_message);
 
-    array_push($old_records, $new_message);
+        $data_to_save = $old_records;
+    }
 
-    $data_to_save = $old_records;
-}
+    if (!file_put_contents("Result_json/messages.json", json_encode($data_to_save, JSON_PRETTY_PRINT), LOCK_EX)) {
 
-if (!file_put_contents("Result_json/messages.json", json_encode($data_to_save, JSON_PRETTY_PRINT), LOCK_EX)){
+        $success = "Dados inseridos com sucesso!";
+    } else {
+
+        $error = "Erro encontrado, tente novamente!!";
+    }
+
     
-    $success = "Dados inseridos com sucesso!";
-    
-}else{
-
-    $error = "Erro encontrado, tente novamente!!";
-    
-}
-
-//inserindo o json no banco
-$stmt = $mysqli->prepare
-(
-    "INSERT INTO teste (descricao, cliente, cpf) 
+    //inserindo o json no banco
+    $stmt = $mysqli->prepare(
+        "INSERT INTO teste (descricao, cliente, cpf) 
      VALUES (?,?,?)"
-);
-$stmt->bind_param("sss", $descricao, $cliente, $cpf);
+    );
+    $stmt->bind_param("sss", $descricao, $cliente, $cpf);
 
-//percorrendo os dados do json
-$inserted_rows = 0;
-foreach ($data_to_save as $data) {
-    $descricao = $data["desc"];
-    $cliente = $data["client"];
-    $cpf = $data["cpf"];
+    $inserted_rows = 0;
+    foreach ($data_to_save as $data) {
+        $descricao = $data["desc"];
+        $cliente = $data["client"];
+        $cpf = $data["cpf"];
 
-    $stmt->execute();
-    $inserted_rows ++;
-}
+        $stmt->execute();
+        $inserted_rows++;
+    }
 
-/*if (count($data_to_save) == $inserted_rows) {
+    /*if (count($data_to_save) == $inserted_rows) {
     echo "<div class=\"json\">Dados inseridos com sucesso</div>";
-}else{
+    }else{
     echo "<div class=\"json\">error</div>";
-}*/
+    }*/
 
 
-//excluindo os dados do arquivo json
-if (isset($_POST['submit'])) 
-     {
+    // update dos dados json no banco
+    $sql = "update teste set
+    descricao = '" . $descricao . "', cliente = '" . $cliente . "',cpf = '" . $cpf . "'
+    where cpf = " . $cpf;
+
+    if (mysqli_query($mysqli, $sql)) {
+        $msg = "Atualizado com sucesso!";
+    } else {
+        $msg = "Erro ao atualizar!";
+    }
+    mysqli_close($mysqli);
+
+
+    //excluindo os dados do arquivo json para não sobescrever os dados no banco
+    if (isset($_POST['submit'])) {
 
         $cpf = $_POST['cpf'];
 
-        if(empty($cpf)) return;
+        if (empty($cpf)) return;
 
         $posts = json_decode(file_get_contents('Result_json/messages.json'));
 
         foreach ($posts as $key => $post) {
-            if ($post->cpf == $cpf){
-                unset ($posts[$key]);
+            if ($post->cpf == $cpf) {
+                unset($posts[$key]);
             }
             $save = json_encode($posts, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             file_put_contents('Result_json/messages.json', $save);
         }
-
-     }
-
+    }
 }
 
-//funciona, porém ele sobreescreve os dados anteriores, obs: é igual o de cima, só que  o código é menor kkkkkkkk :(
+//funciona, porém ele sobreescreve os dados anteriores, obs: é igual o de cima, só que o código é menor kkkkkkkk :(
 //percorrendo os dados do json;
 /*foreach ((array)$data_to_save as $data) {
  
@@ -99,8 +105,7 @@ if (isset($_POST['submit']))
 }*/
 
 
-
-//deve funcionar, porém eu não tenho a menor ideia de como fazer funciona
+//deve funcionar, porém eu não tenho a menor ideia de como boba fazer isso funciona kkkkkjk
 //Inserindo o json no banco
 
 /*$json= json_encode($data_to_save);
@@ -126,4 +131,5 @@ try {
 } catch (Exception $e) {
     echo $e;
 }*/
+
 
