@@ -105,7 +105,6 @@ if (isset($_POST['submit'])) {
 }*/
 
 
-//deve funcionar, porém eu não tenho a menor ideia de como boba fazer isso funciona kkkkkjk
 //Inserindo o json no banco
 
 /*$json= json_encode($data_to_save);
